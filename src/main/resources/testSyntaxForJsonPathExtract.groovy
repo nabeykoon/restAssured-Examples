@@ -9,7 +9,7 @@ class testSyntaxForJsonPathExtract {
         println(object.data.min{it.id}.id);
     }
 }
-
+//useful links
 //http://jsonviewer.stack.hu/
 //http://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/Collection.html#findAll()
 //http://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/Collection.html#find()
