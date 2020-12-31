@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.Nadeera</groupId>
-    <artifactId>restAssured-framework</artifactId>
+    <artifactId>restAssured-Examples</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <build>
@@ -75,6 +75,12 @@
         <artifactId>groovy-json</artifactId>
         <version>3.0.6</version>
         <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.skyscreamer</groupId>
+        <artifactId>jsonassert</artifactId>
+        <version>1.5.0</version>
+        <scope>test</scope>
     </dependency>
     <!--    <dependency>
             <groupId>org.testng</groupId>
