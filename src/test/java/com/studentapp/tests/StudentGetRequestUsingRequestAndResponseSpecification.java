@@ -8,6 +8,8 @@ import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.hamcrest.Matchers.*;
 
 import static io.restassured.RestAssured.given;
@@ -37,13 +39,14 @@ public class StudentGetRequestUsingRequestAndResponseSpecification {
         responseSpecBuilder.expectStatusCode (200);
         responseSpecBuilder.expectBody ("[0].firstName", equalTo("Reece"));
         responseSpecBuilder.expectBody ("[1].firstName", equalTo("Orson"));
+        responseSpecBuilder.expectResponseTime (lessThan (500L), TimeUnit.MILLISECONDS);
         responseSpec = responseSpecBuilder.build ();
 
 
     }
 
     @Test
-    public void getSingleCSStudent() {
+    public void getCSStudents() {
 
         given ()
                 .spec (requestSpec)
@@ -54,6 +57,31 @@ public class StudentGetRequestUsingRequestAndResponseSpecification {
                 .body ("[4].firstName", equalTo("Peter"))
                 .log ()
                 .all ();
+
+    }
+
+    @Test
+    public void extractResponseTimeForGetCSStudents() {
+
+        long responseTime = given ()
+                .spec (requestSpec)
+                .when ()
+                .get ("/list")
+                .timeIn (TimeUnit.MILLISECONDS);
+        System.out.println ("Response time is: " + responseTime + " " + TimeUnit.MILLISECONDS);
+
+    }
+
+    @Test
+    public void VerifyResponseTimeForGetCSStudents() {
+
+        given ()
+                .spec (requestSpec)
+                .when ()
+                .get ("/list")
+                .then()
+                .spec (responseSpec)
+                .time (lessThan (300L), TimeUnit.MILLISECONDS);
 
     }
 

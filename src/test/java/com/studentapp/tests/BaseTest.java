@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
 
     @BeforeMethod
-    public static void init(){
+    public void init(){
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = 8080;
         RestAssured.basePath = "/student";
