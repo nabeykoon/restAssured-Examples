@@ -20,7 +20,7 @@ import java.nio.charset.Charset;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class LogFilterExamples {
+public class LogFilterExamples extends BaseTest{
 
     public static StringWriter requestWriter;
     public static PrintStream requestCapture;
@@ -32,10 +32,8 @@ public class LogFilterExamples {
     public static PrintStream errorCapture;
 
     @BeforeClass
-    public static void init() {
-        RestAssured.baseURI = "http://localhost";
-        RestAssured.port = 8080;
-        RestAssured.basePath = "/student";
+    public void init() {
+        super.init();
     }
 
     @BeforeMethod

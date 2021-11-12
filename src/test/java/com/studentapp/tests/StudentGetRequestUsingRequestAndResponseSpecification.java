@@ -81,8 +81,7 @@ public class StudentGetRequestUsingRequestAndResponseSpecification {
                 .get ("/list")
                 .then()
                 .spec (responseSpec)
-                .time (lessThan (300L), TimeUnit.MILLISECONDS);
+                .time (lessThan (500L), TimeUnit.MILLISECONDS);
 
     }
-
 }
