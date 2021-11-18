@@ -1,0 +1,1 @@
+This project is created to demonstrated key features and usages of REST-Assured for mainly automating REST services.
